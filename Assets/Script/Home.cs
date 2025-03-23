@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Start : MonoBehaviour
+public class Home : MonoBehaviour
 {
-    // Update is called once per frame
+    void Start()
+    {
+        Screen.SetResolution(1920, 1080, true);
+    }
+
     void Update()
     {
         
