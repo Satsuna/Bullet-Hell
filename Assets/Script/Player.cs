@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public Transform respawnPoint;
     private float firingRate = 0.1f;
     private float fireCooldown = 0;
 
@@ -55,16 +54,6 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy Bullet")) {
             currentHP -= 1;
-            //StartCoroutine(Wait());
         }
-    }
-
-    IEnumerator Wait() {
-        // Disable player temporarily
-        yield return new WaitForSeconds(1.5f);
-
-        // Reset HP and respawn
-        currentHP = maxHP;
-        transform.position = respawnPoint.position;
     }
 }
