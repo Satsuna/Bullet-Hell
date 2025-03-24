@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     public GameObject gameOverUI;
     public Image[] hearts;
 
+    public AudioSource shootSound;
+    public AudioSource hitSound;
+
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -44,6 +47,8 @@ public class Player : MonoBehaviour
         }
 
         if (currentHP <= 0) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             gameOverUI.SetActive(true);
             Destroy(gameObject);
             Time.timeScale = 0;
@@ -57,20 +62,22 @@ public class Player : MonoBehaviour
 
     void Shoot() {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        shootSound.Play();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy Bullet")) {
-            currentHP -= 1;
             StartCoroutine(Invincible());
+            currentHP -= 1;
+            hitSound.Play();
             UpdateHeartsUI();
         }
     }
 
     IEnumerator Invincible() {
-        anim.SetTrigger("Death");
         GetComponent<CircleCollider2D>().enabled = false;
+        anim.SetTrigger("Death");
         yield return new WaitForSeconds(1.5f);
         GetComponent<CircleCollider2D>().enabled = true;
     }

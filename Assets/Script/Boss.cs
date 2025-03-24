@@ -19,6 +19,8 @@ public class Boss : MonoBehaviour
 
         if (currentHP <= 0)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             Time.timeScale = 0;
             Destroy(gameObject);
             winUI.SetActive(true);

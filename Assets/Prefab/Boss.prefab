@@ -178,7 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
-  maxHP: 400
+  maxHP: 300
+  winUI: {fileID: 0}
 --- !u!1 &3390626249634084060
 GameObject:
   m_ObjectHideFlags: 0

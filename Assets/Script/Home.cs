@@ -5,6 +5,8 @@ public class Home : MonoBehaviour
 {
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Screen.SetResolution(1920, 1080, true);
         Time.timeScale = 1;
     }
