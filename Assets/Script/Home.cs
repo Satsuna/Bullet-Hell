@@ -6,14 +6,13 @@ public class Home : MonoBehaviour
     void Start()
     {
         Screen.SetResolution(1920, 1080, true);
+        Time.timeScale = 1;
     }
-
-    void Update()
-    {
-        
-    }
-
     public void StartClick() {
         SceneManager.LoadScene("Play");
+    }
+
+    public void QuitClick() {
+        Application.Quit();
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3404155047164250648}
   - component: {fileID: 7103460320856760263}
   - component: {fileID: 7792701280601452496}
+  - component: {fileID: 3690569392063805433}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -106,7 +107,8 @@ MonoBehaviour:
   MovementSpeed: {x: 5, y: 5}
   bulletPrefab: {fileID: 2864860965313722713, guid: 9b9b470be240df34ea41f245a7f328da, type: 3}
   firePoint: {fileID: 1216955103761012810}
-  Health: 3
+  maxHP: 3
+  deathAnim: {fileID: 0}
 --- !u!50 &7103460320856760263
 Rigidbody2D:
   serializedVersion: 5
@@ -170,6 +172,28 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.4}
   m_Radius: 0.3
+--- !u!95 &3690569392063805433
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5627961614163831391}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aba348cade95b0c4b9e45c5e5f25cf97, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8110093589502834479
 GameObject:
   m_ObjectHideFlags: 0

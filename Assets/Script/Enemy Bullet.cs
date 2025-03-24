@@ -4,7 +4,7 @@ public class EnemyBullet : MonoBehaviour
 {
     public float speed = 5f;
     public int damage = 1;
-    public float lifetime = 5f;
+    public float lifetime = 3f;
 
     void Start()
     {

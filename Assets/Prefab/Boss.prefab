@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
-  maxHP: 100
+  maxHP: 400
 --- !u!1 &3390626249634084060
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1012298562249582639}
-  - component: {fileID: 8007566390178598865}
+  - component: {fileID: 7653320463747668617}
   m_Layer: 0
   m_Name: Fire Point
   m_TagString: Untagged
@@ -298,7 +298,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 374741085230565730}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!114 &8007566390178598865
+--- !u!114 &7653320463747668617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,9 +307,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4536709376150826569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cae6111ad32a37e45b6dbc92435531c0, type: 3}
+  m_Script: {fileID: 11500000, guid: f143158aac2ed6c4dac9799f3fb213ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6798826146793635302, guid: c20ea7ab5f62f524a8d4e488815d9bc4, type: 3}
+  bulletPrefab: {fileID: 1725381415078704559, guid: 4bf7d35f8f90b0d428ea0349a1c1b4a4, type: 3}
   firePoint: {fileID: 1012298562249582639}
+  target: {fileID: 0}
   fireRate: 0.2
+  bulletCount: 5
+  spreadAngle: 30
+  bulletSpeed: 5

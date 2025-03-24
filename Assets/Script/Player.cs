@@ -1,5 +1,8 @@
 using System.Collections;
+using Microsoft.Unity.VisualStudio.Editor;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -14,11 +17,16 @@ public class Player : MonoBehaviour
 
     public int maxHP = 3;
     private int currentHP;
+    public Animator anim;
+    public GameObject gameOverUI;
+    public UnityEngine.UI.Image[] hearts;
 
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         currentHP = maxHP;
+        Time.timeScale = 1;
     }
 
     void Update()
@@ -37,7 +45,9 @@ public class Player : MonoBehaviour
         }
 
         if (currentHP <= 0) {
+            gameOverUI.SetActive(true);
             Destroy(gameObject);
+            Time.timeScale = 0;
         }
     }
 
@@ -54,6 +64,23 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy Bullet")) {
             currentHP -= 1;
+            StartCoroutine(Invincible());
+            UpdateHeartsUI();
+        }
+    }
+
+    IEnumerator Invincible() {
+        anim.SetTrigger("Death");
+        GetComponent<CircleCollider2D>().enabled = false;
+        yield return new WaitForSeconds(1.5f);
+        GetComponent<CircleCollider2D>().enabled = true;
+    }
+
+    void UpdateHeartsUI()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            hearts[i].enabled = (i < currentHP);
         }
     }
 }
