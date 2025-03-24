@@ -1,5 +1,4 @@
 using System.Collections;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,7 +18,7 @@ public class Player : MonoBehaviour
     private int currentHP;
     public Animator anim;
     public GameObject gameOverUI;
-    public UnityEngine.UI.Image[] hearts;
+    public Image[] hearts;
 
     void Start()
     {
