@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         currentHP = maxHP;
         Time.timeScale = 1;
     }
