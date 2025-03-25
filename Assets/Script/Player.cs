@@ -16,12 +16,16 @@ public class Player : MonoBehaviour
 
     public int maxHP = 3;
     private int currentHP;
+    private bool isInvincible = false;
     public Animator anim;
     public GameObject gameOverUI;
     public Image[] hearts;
 
     public AudioSource shootSound;
     public AudioSource hitSound;
+
+    public Transform boundaryMin;
+    public Transform boundaryMax;
 
     void Start()
     {
@@ -55,9 +59,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    void FixedUpdate() {
-        //movement update to
-        rigidbody2D.MovePosition(rigidbody2D.position + (inputVector * MovementSpeed * Time.fixedDeltaTime));
+    void FixedUpdate()
+    {
+    //movement update to
+    Vector2 newPosition = rigidbody2D.position + (inputVector * MovementSpeed * Time.fixedDeltaTime);
+
+    newPosition.x = Mathf.Clamp(newPosition.x, boundaryMin.position.x, boundaryMax.position.x);
+    newPosition.y = Mathf.Clamp(newPosition.y, boundaryMin.position.y, boundaryMax.position.y);
+
+    rigidbody2D.MovePosition(newPosition);
     }
 
     void Shoot() {
@@ -67,7 +77,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy Bullet")) {
+        if (collision.gameObject.CompareTag("Enemy Bullet") && !isInvincible) {
             StartCoroutine(Invincible());
             currentHP -= 1;
             hitSound.Play();
@@ -76,9 +86,11 @@ public class Player : MonoBehaviour
     }
 
     IEnumerator Invincible() {
+        isInvincible = true;
         GetComponent<CircleCollider2D>().enabled = false;
         anim.SetTrigger("Death");
         yield return new WaitForSeconds(1.5f);
+        isInvincible = false;
         GetComponent<CircleCollider2D>().enabled = true;
     }
 

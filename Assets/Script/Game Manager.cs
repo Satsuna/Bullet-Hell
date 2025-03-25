@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject pauseUI;
+    public GameObject loseUI;
+    public GameObject winUI;
     void Start()
     {
         Screen.SetResolution(1920, 1080, true);
@@ -12,7 +14,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) && loseUI.activeSelf == false && winUI.activeSelf == false) {
             Pause();
         }
     }
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public void continueClick() {
         pauseUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         Time.timeScale = 1;
     }
 
