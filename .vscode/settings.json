@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Bullet Hell.sln"
+    "dotnet.defaultSolution": "Bullet-Hell.sln"
 }

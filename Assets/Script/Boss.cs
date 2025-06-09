@@ -4,11 +4,25 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour
 {
     public Slider slider;
-    public int maxHP = 100;
+    public int maxHP;
     private int currentHP;
     public GameObject winUI;
+    void Start()
+    {
 
-    void Start () {
+        if (Home.difficulty == 1)
+        {
+            maxHP = 100;
+        }
+        if (Home.difficulty == 2)
+        {
+            maxHP = 200;
+        }
+        if (Home.difficulty == 3)
+        {
+            maxHP = 300;
+        }
+    
         currentHP = maxHP;
         slider.maxValue = maxHP;
         slider.value = currentHP;

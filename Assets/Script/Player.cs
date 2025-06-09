@@ -1,10 +1,10 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public float walkSpeedMultiplier = 0.5f;
     public Vector2 MovementSpeed = new Vector2(100.0f, 100.0f);
     private new Rigidbody2D rigidbody2D;
     private Vector2 inputVector = new Vector2(0.0f, 0.0f);
@@ -45,12 +45,14 @@ public class Player : MonoBehaviour
             fireCooldown -= Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.J) && fireCooldown <= 0f) {
+        if (Input.GetKey(KeyCode.J) && fireCooldown <= 0f)
+        {
             Shoot();
             fireCooldown = firingRate;
         }
 
-        if (currentHP <= 0) {
+        if (currentHP <= 0)
+        {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             gameOverUI.SetActive(true);
@@ -61,13 +63,14 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-    //movement update to
-    Vector2 newPosition = rigidbody2D.position + (inputVector * MovementSpeed * Time.fixedDeltaTime);
+        float speedMultiplier = Input.GetKey(KeyCode.LeftShift) ? walkSpeedMultiplier : 1f;
 
-    newPosition.x = Mathf.Clamp(newPosition.x, boundaryMin.position.x, boundaryMax.position.x);
-    newPosition.y = Mathf.Clamp(newPosition.y, boundaryMin.position.y, boundaryMax.position.y);
+        Vector2 newPosition = rigidbody2D.position + (inputVector * MovementSpeed * speedMultiplier * Time.fixedDeltaTime);
 
-    rigidbody2D.MovePosition(newPosition);
+        newPosition.x = Mathf.Clamp(newPosition.x, boundaryMin.position.x, boundaryMax.position.x);
+        newPosition.y = Mathf.Clamp(newPosition.y, boundaryMin.position.y, boundaryMax.position.y);
+
+        rigidbody2D.MovePosition(newPosition);
     }
 
     void Shoot() {

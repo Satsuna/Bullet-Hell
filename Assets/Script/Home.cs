@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Home : MonoBehaviour
 {
+    public static int difficulty;
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -10,11 +11,30 @@ public class Home : MonoBehaviour
         Screen.SetResolution(1920, 1080, true);
         Time.timeScale = 1;
     }
-    public void StartClick() {
+    public void StartClick()
+    {
         SceneManager.LoadScene("Play");
     }
 
-    public void QuitClick() {
+    public void QuitClick()
+    {
         Application.Quit();
     }
+
+    public void Easy()
+    {
+        difficulty = 1;
+        StartClick();
+    }
+    public void Medium()
+    {
+        difficulty = 2;
+        StartClick();
+    }
+    public void Hard()
+    {
+        difficulty = 3;
+        StartClick();
+    }
+    
 }
